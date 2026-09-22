@@ -45,7 +45,7 @@ export const CHAPTERS: Chapter[] = [
         <Lead>Eerst een keer de hele cyclus met je eigen ogen zien. Een agent, een ticket, jij als reviewer.</Lead>
         <Steps items={[
           <>Zet je naam in de balk bovenaan. Alles wat je vanuit het scherm doet, wordt gelogd als <Code>human:jouwnaam</Code>.</>,
-          <>Laat de app draaien in een terminal (<Code>npm run dev</Code>). Open een tweede terminal in dezelfde map en start Claude Code: <Code>claude</Code>. De agent praat via <Code>curl</Code> met het bord, dus de app moet aan staan.</>,
+          <>Draait de app nog niet? Start Claude Code in de projectmap (<Code>claude</Code>) en zeg: <Prompt>Lees START.md en zet de applicatie voor mij aan.</Prompt> Claude Code controleert Node, installeert, start de app en vertelt je waar je moet klikken. Zelf doen kan ook: <Code>npm run dev</Code> in een aparte terminal.</>,
           <>Geef de eerste opdracht: <Prompt>Lees CLAUDE.md. Pak daarna DEMO-18 op van het bord en werk het ticket af.</Prompt></>,
           <>Kijk mee op het bord. Verscheen het AI Plan voordat er code veranderde? Eindigde het ticket in review, niet in done? Kun je het bewijs zelf controleren?</>,
           <>Open het ticket, tabblad Result. Keur goed, of kies <i>Request changes</i> en schrijf waarom. Stuur het bewust een keer terug en vraag Claude het ticket opnieuw op te pakken. Leest de agent jouw opmerking? Kijk in Journey.</>,
@@ -66,8 +66,8 @@ export const CHAPTERS: Chapter[] = [
         </Lead>
         <H>Zo praat je met een agent</H>
         <Steps items={[
-          <>Terminal 1: de app draait (<Code>npm run dev</Code>). Laat die staan.</>,
-          <>Terminal 2, in dezelfde projectmap: <Code>claude</Code>. Dit is je gesprek met het team.</>,
+          <>De app draait (via START.md of <Code>npm run dev</Code>). Laat die staan.</>,
+          <>Claude Code in dezelfde projectmap: <Code>claude</Code>. Dit is je gesprek met het team. Dezelfde sessie waarmee je de app hebt gestart is prima.</>,
           <>Noem de rol in je zin: <i>&quot;Gebruik de project-manager agent, …&quot;</i> of <i>&quot;Gebruik de builder, …&quot;</i>. Claude Code kiest de rol dan zeker goed. Later mag je dat weglaten.</>,
           <>Typ gewoon Nederlands. De agent antwoordt in jouw taal en vraagt door als iets onduidelijk is. Jij antwoordt in het gesprek, niet op het bord.</>,
           <>Houd het bord open in je browser. Alles wat de agent doet, zie je daar binnen een paar seconden.</>,

@@ -10,6 +10,14 @@ AI agents follow. Built as the hands-on kit for the *AI in projectwerk* training
 
 ## Run it
 
+The easy way, and the way the workshop starts: open Claude Code in this folder and say
+
+> Read START.md and get the application running for me.
+
+Claude checks Node, installs, starts the app, and tells you where to click next.
+
+By hand:
+
 ```bash
 npm install
 npm run dev

@@ -3,6 +3,10 @@
 A small command board for an AI-assisted project team. Next.js 16 (App Router),
 Drizzle, SQLite (`@libsql/client`), Tailwind v4. No auth, localhost only.
 
+## First run
+
+If the user asks you to start the application or to read `START.md`, follow `START.md` step by step.
+
 ## Commands
 
 - `npm run dev` starts the app on http://localhost:3000 (creates and seeds `data/cockpit.db` on first start)
