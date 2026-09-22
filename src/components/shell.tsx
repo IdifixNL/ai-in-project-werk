@@ -10,6 +10,7 @@ import { useIdentity } from "@/lib/identity";
 const NAV = [
   { href: "/", label: "Dashboard", icon: <><rect x="3" y="3" width="7" height="9" /><rect x="14" y="3" width="7" height="5" /><rect x="14" y="12" width="7" height="9" /><rect x="3" y="16" width="7" height="5" /></> },
   { href: "/board", label: "Board", icon: <><rect x="3" y="4" width="5" height="16" /><rect x="10" y="4" width="5" height="10" /><rect x="17" y="4" width="4" height="13" /></> },
+  { href: "/oefening", label: "Oefening instructie", icon: <><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z" /><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z" /></> },
 ];
 
 export function Shell({ projectName, children }: { projectName: string; children: ReactNode }) {
