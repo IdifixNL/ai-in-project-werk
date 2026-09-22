@@ -16,9 +16,16 @@ Drizzle, SQLite (`@libsql/client`), Tailwind v4. No auth, localhost only.
 - `src/lib/schema.ts` Drizzle tables; matching `CREATE TABLE` DDL in `src/lib/db.ts` (edit both when you add a column)
 - `src/lib/seed.ts` demo data, only inserted when the database is empty
 - `src/lib/config.ts` project name and ticket prefix
+- `docs/project.md` the project brief, read by every agent
 - `src/app/api/**` REST route handlers, documented in `docs/api.md`
 - `src/app/page.tsx` dashboard, `src/app/board/page.tsx` board
 - `src/components/**` UI; `src/app/globals.css` design tokens (dark default, light via `data-theme`)
+
+## The project brief
+
+`docs/project.md` says what this project is about: what we make, for whom, what exists, what counts as
+done, what is out of scope, and the words the team uses. Every agent reads it first. While it still
+says `status: template`, the project-manager agent interviews the user and fills it in.
 
 ## The board contract (read this before touching a ticket)
 

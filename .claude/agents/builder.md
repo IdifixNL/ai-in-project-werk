@@ -11,6 +11,8 @@ Your actor string is `agent:builder`. Send it on every write.
 
 ## Procedure
 
+0. Read `docs/project.md` once per session. It says what this project is, what counts as done here,
+   and which words the user uses. If it is still a template, say so and carry on with the ticket.
 1. Read the ticket: `curl -s localhost:3000/api/kanban/<REF>`. Read its comments and events too.
    If it is not in `todo`, stop and tell the user why.
 2. Pick it up and publish your plan in ONE call, before touching any code:

@@ -22,7 +22,7 @@ export const CHAPTERS: Chapter[] = [
           <Card title="Board" href="/board">Vijf kolommen. Boven elke kolom staat wie een ticket ernaartoe mag verplaatsen: HUMAN of AGENT. Sleep kaarten, klik op een kaart voor de details.</Card>
           <Card title="Ticket">Vier tabbladen. <b>Request</b> is jouw vraag in gewone taal. <b>AI Plan</b> schrijft de agent voordat er code komt. <b>Result</b> is wat er is gedaan plus bewijs. <b>Journey</b> is wie wat deed, en wanneer.</Card>
           <Card title="Dashboard" href="/">Alle cijfers komen uit een plek: <Code>GET /api/stats</Code>. Dit is de plek die je straks uitbreidt.</Card>
-          <Card title="CLAUDE.md">Het contract dat Claude Code leest bij elke sessie: de tabbladen, wie wat mag, en de stappen om een ticket te doen. Jij bent de eigenaar van dit bestand.</Card>
+          <Card title="CLAUDE.md en docs/project.md">Het contract dat Claude Code leest bij elke sessie (de tabbladen, wie wat mag, de stappen), en het projectbrief dat zegt waar jouw project over gaat. Jij bent de eigenaar van beide.</Card>
         </Grid>
         <H>De regel die de server afdwingt</H>
         <Lead>
@@ -57,14 +57,25 @@ export const CHAPTERS: Chapter[] = [
   {
     id: "projectmanager",
     title: "Werken met de projectmanager",
-    short: "Van gesprek naar tickets",
+    short: "Je project uitleggen, dan tickets",
     body: (
       <>
         <Lead>
           Tickets zelf typen is prima, maar zo werkt een team niet. In dit project zit een tweede agent: de <b className="text-text">projectmanager</b>.
           Jij vertelt wat je wilt, de projectmanager maakt er tickets van in de backlog. Jij zet ze op todo, de builder pakt ze op.
         </Lead>
-        <H>Zo gaat het gesprek</H>
+        <H>Eerst: leer je team het project kennen</H>
+        <Lead>
+          De projectmanager weet hoe een goed ticket eruitziet, maar weet niets van jouw project. Dat staat in <Code>docs/project.md</Code>:
+          wat maken we, voor wie, wat is er al, wat telt als klaar, wat doen we niet, welke woorden gebruiken we. Elke agent leest dat bestand eerst.
+          Zolang het nog een sjabloon is, begint de projectmanager met vragen. Start zo:
+        </Lead>
+        <Prompt>Gebruik de project-manager agent. Ik wil je vertellen waar mijn project over gaat.</Prompt>
+        <Lead>
+          Je krijgt maximaal vijf korte vragen. Antwoord in gewone taal, zoals aan een nieuwe collega. De projectmanager schrijft het op, laat het zien en vraagt of het klopt.
+          Lees het na. Dit is het belangrijkste bestand van je team: alles wat hier verkeerd staat, komt terug in elk ticket. Je mag het altijd zelf aanpassen.
+        </Lead>
+        <H>Daarna: van gesprek naar tickets</H>
         <Chat lines={[
           { who: "jij", text: "Gebruik de project-manager agent. Ik wil op het dashboard zien welke klanten dit kwartaal het meeste omzet opleveren. De cijfers staan in een CSV die ik nog moet aanleveren." },
           { who: "pm", text: "Twee vragen: hoeveel klanten wil je zien, en is de CSV per factuur of per klant? Ik stel voor: (1) CSV met omzet per klant in de repo, (2) top 5 klanten als tegel op het dashboard, (3) klik op de tegel voor de volledige lijst. Akkoord?" },
@@ -76,7 +87,7 @@ export const CHAPTERS: Chapter[] = [
         ]} />
         <H>De rolverdeling</H>
         <Grid>
-          <Card title="Projectmanager">Praat met jou, stelt maximaal drie vragen, laat titels zien voor het aanmaken. Maakt tickets in backlog. Zet alleen op todo als jij dat zegt. Bouwt nooit.</Card>
+          <Card title="Projectmanager">Kent het project uit <Code>docs/project.md</Code>. Praat met jou, stelt maximaal drie vragen, laat titels zien voor het aanmaken. Maakt tickets in backlog. Zet alleen op todo als jij dat zegt. Bouwt nooit.</Card>
           <Card title="Builder">Pakt een ticket uit todo. Schrijft eerst het AI Plan, dan pas code. Levert af in review met bewijs. Maakt nooit eigen tickets aan.</Card>
           <Card title="Jij">Beslist wat naar todo gaat. Leest het plan. Keurt goed of stuurt terug met een reden. De enige die done mag zetten.</Card>
           <Card title="Bord">Onthoudt alles. Journey laat zien wie wat deed. Het dashboard laat zien of het werk stroomt.</Card>
@@ -86,6 +97,7 @@ export const CHAPTERS: Chapter[] = [
           <>Beschrijf iets uit je eigen werk aan de projectmanager, zo vaag als je het zelf in je hoofd hebt. Kijk welke vragen je krijgt.</>,
           <>Laat de projectmanager een groot idee opsplitsen. Zijn de tickets klein genoeg voor een builder-sessie?</>,
           <>Vraag de projectmanager het bord te lezen en te zeggen wat als eerste moet. Ben je het eens?</>,
+          <>Vertel de projectmanager tussendoor iets nieuws over je project en kijk of hij aanbiedt het in <Code>docs/project.md</Code> te zetten.</>,
           <>Open <Code>.claude/agents/project-manager.md</Code> en voeg een regel toe die bij jouw manier van werken past. Bijvoorbeeld: elk ticket krijgt een acceptatiecriterium.</>,
         ]} />
       </>
