@@ -10,6 +10,15 @@ Drizzle, SQLite (`@libsql/client`), Tailwind v4. No auth, localhost only.
 - `npm run lint` and `npx tsc --noEmit` must both be clean before a ticket goes to review
 - `docker compose up` runs the same thing in a container
 
+## Helping someone get it running
+
+When the user says the app does not start or the board is empty, diagnose in this order and fix it
+for them: `node -v` (needs 20+; suggest installing the LTS from nodejs.org), `npm install` finished
+without errors, port 3000 free (else `npm run dev -- -p 3001` and use that port in every curl),
+`data/cockpit.db` corrupt or half-written (delete it, it reseeds on start). On Windows, run commands
+through Git Bash, not PowerShell; PowerShell's `curl` is Invoke-WebRequest and breaks JSON bodies.
+Docker is only a fallback (`docker compose up --build`) and needs Docker Desktop with WSL2.
+
 ## Where things live
 
 - `src/lib/kanban.ts` all ticket logic and the one server rule

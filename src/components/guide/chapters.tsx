@@ -263,6 +263,12 @@ export const CHAPTERS: Chapter[] = [
     short: "Reset, poort, Docker",
     body: (
       <>
+        <Lead>
+          Eerste stap, altijd: vraag het aan Claude Code zelf. Start <Code>claude</Code> in de projectmap en plak de foutmelding erbij.
+          Het kent de bekende problemen uit CLAUDE.md en lost ze voor je op.
+        </Lead>
+        <Prompt>De app start niet. Dit is wat ik zie in de terminal: [plak de foutmelding]. Help me het werkend te krijgen.</Prompt>
+        <H>Wat het meestal is</H>
         <Bullets items={[
           <>Bord leeg of foutmeldingen: stop <Code>npm run dev</Code>, verwijder <Code>data/cockpit.db</Code>, start opnieuw. De demo-data komt terug.</>,
           <>Poort 3000 bezet: <Code>npm run dev -- -p 3001</Code>, en vertel je agent de nieuwe poort.</>,
