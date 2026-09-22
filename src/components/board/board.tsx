@@ -24,12 +24,14 @@ export function Board() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [creating, setCreating] = useState<Status | null>(null);
   const [showOldDone, setShowOldDone] = useState(false);
+  const [loadedAt, setLoadedAt] = useState(0);
   const [name] = useIdentity();
   const actor = humanActor(name);
 
   const refresh = useCallback(async () => {
     try {
       setTickets(await api<Ticket[]>("/api/kanban"));
+      setLoadedAt(Date.now());
       setError(null);
     } catch (e) {
       setError((e as Error).message);
@@ -50,7 +52,7 @@ export function Board() {
   const visible = tickets.filter((t) => (priority === "all" || t.priority === priority) && (label === null || t.label === label));
 
   // Done fills up fast; keep the column readable by folding away anything older than two weeks.
-  const recentCutoff = Date.now() - 14 * 86_400_000;
+  const recentCutoff = loadedAt - 14 * 86_400_000;
   const isRecentDone = (t: Ticket) => t.status !== "done" || new Date(t.updatedAt).getTime() >= recentCutoff;
   const oldDoneCount = visible.filter((t) => !isRecentDone(t)).length;
 

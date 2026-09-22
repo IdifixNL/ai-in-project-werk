@@ -30,8 +30,8 @@ Prefer Docker? `docker compose up --build`, same URL.
 | **The rule** | an agent can never move a ticket to `done`; the server refuses and logs it |
 | **API** | plain REST, `docs/api.md`, addressable by ref (`DEMO-7`) |
 | **Agent contract** | `CLAUDE.md`, read by Claude Code on every session |
-| **Example agent** | `.claude/agents/builder.md` |
-| **Workshop** | `docs/workshop.md` |
+| **Example agents** | `.claude/agents/project-manager.md` (talks to you, writes tickets) and `.claude/agents/builder.md` (works one ticket) |
+| **Workshop** | in the app under *Oefening instructie* (Dutch), and `docs/workshop.md` |
 
 Stack: Next.js 16, React 19, Drizzle, SQLite via `@libsql/client` (no native build step), Tailwind v4.
 Dark by default, light mode in the top bar.

@@ -39,7 +39,13 @@ Every write carries an `actor`. Agents use `agent:<name>`, humans `human:<name>`
 **Hard rule, enforced by the server: an agent can never set `status: "done"`.** You finish at
 `review`. A human approves or sends it back. If you get a 403, that is the system working.
 
-### Working a ticket
+### Team roles in this repo
+
+- `.claude/agents/project-manager.md` turns a conversation into tickets in `backlog`. Moves a ticket to `todo` only when the human says so. Never builds.
+- `.claude/agents/builder.md` picks up ONE ticket from `todo`, plans, builds, delivers to `review`. Never creates tickets for itself.
+- The human promotes `backlog -> todo` and decides `review -> done` or `review -> backlog` with a note.
+
+### Working a ticket (builder)
 
 1. Pick a ticket from `todo` (never from `backlog`; a human decides what is ready).
 2. Move it to `in_progress`, set yourself as owner, and write the AI Plan in the same call:
