@@ -64,6 +64,14 @@ export const CHAPTERS: Chapter[] = [
           Tickets zelf typen is prima, maar zo werkt een team niet. In dit project zit een tweede agent: de <b className="text-text">projectmanager</b>.
           Jij vertelt wat je wilt, de projectmanager maakt er tickets van in de backlog. Jij zet ze op todo, de builder pakt ze op.
         </Lead>
+        <H>Zo praat je met een agent</H>
+        <Steps items={[
+          <>Terminal 1: de app draait (<Code>npm run dev</Code>). Laat die staan.</>,
+          <>Terminal 2, in dezelfde projectmap: <Code>claude</Code>. Dit is je gesprek met het team.</>,
+          <>Noem de rol in je zin: <i>&quot;Gebruik de project-manager agent, …&quot;</i> of <i>&quot;Gebruik de builder, …&quot;</i>. Claude Code kiest de rol dan zeker goed. Later mag je dat weglaten.</>,
+          <>Typ gewoon Nederlands. De agent antwoordt in jouw taal en vraagt door als iets onduidelijk is. Jij antwoordt in het gesprek, niet op het bord.</>,
+          <>Houd het bord open in je browser. Alles wat de agent doet, zie je daar binnen een paar seconden.</>,
+        ]} />
         <H>Eerst: leer je team het project kennen</H>
         <Lead>
           De projectmanager weet hoe een goed ticket eruitziet, maar weet niets van jouw project. Dat staat in <Code>docs/project.md</Code>:
