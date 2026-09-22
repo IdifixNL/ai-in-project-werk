@@ -1,0 +1,11 @@
+services:
+  cockpit:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      PROJECT_NAME: ${PROJECT_NAME:-Talent Programme 2026}
+      TICKET_PREFIX: ${TICKET_PREFIX:-DEMO}
+      DATABASE_URL: file:/app/data/cockpit.db
+    volumes:
+      - ./data:/app/data
