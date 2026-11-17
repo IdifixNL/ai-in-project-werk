@@ -18,6 +18,7 @@ The easy way, and the way the workshop starts: open your AI assistant in this fo
 - **GitHub Copilot**: open the folder in VS Code, open Copilot Chat and switch it to agent mode.
 
 The assistant checks Node, installs, starts the app, and tells you where to click next.
+All prompts for the workshop, step by step: [docs/copilot-prompts.md](docs/copilot-prompts.md).
 On Windows, use Git Bash as the terminal (VS Code picks it for you through `.vscode/settings.json`).
 
 By hand:
