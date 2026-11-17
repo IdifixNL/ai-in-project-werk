@@ -1,7 +1,7 @@
 # START.md
 
-Instructions for Claude Code. The user has just cloned this repo and asked you to read this file
-and get the application running for them. Do the steps below yourself, in order. Talk to the user
+Instructions for the AI assistant (Claude Code, or GitHub Copilot in agent mode). The user has just
+cloned this repo and asked you to read this file and get the application running for them. Do the steps below yourself, in order. Talk to the user
 in the language they use with you (Dutch if they write Dutch). Keep your messages short.
 
 ## 1. Check the machine
@@ -16,8 +16,10 @@ git --version
 
 - Node must be 20 or newer. If it is missing or older, stop and tell the user to install the LTS
   from https://nodejs.org (Windows: the .msi installer, then reopen the terminal). Then continue.
-- On Windows, make sure you are running commands in Git Bash (Claude Code does this by default).
-  PowerShell is not suitable for the curl commands used in this project.
+- On Windows, make sure you are running commands in Git Bash. Claude Code does this by default. In
+  VS Code, this repo's `.vscode/settings.json` makes Git Bash the default terminal; if the terminal is
+  still PowerShell, tell the user to open a new terminal (Terminal, New Terminal) or pick Git Bash from
+  the terminal's dropdown. PowerShell is not suitable for the curl commands used in this project.
 
 ## 2. Install
 
@@ -31,7 +33,8 @@ Do not switch to yarn or pnpm.
 
 ## 3. Start the app
 
-Start the dev server as a background process so the user keeps their terminal:
+Start the dev server as a background process so the user keeps their terminal (in Copilot: run it
+in a background terminal, so it keeps running while you go on):
 
 ```bash
 npm run dev
@@ -59,13 +62,13 @@ Tell them, in this order:
    Chapter 1 explains the board, chapter 2 is their first ticket, chapter 3 introduces the
    project manager.
 4. Say that you are ready to be their team: they can ask for the project-manager agent to tell you
-   about their project, or the builder agent to work a ticket. Point at `CLAUDE.md` as the contract
-   you follow.
+   about their project, or the builder agent to work a ticket. In Copilot they pick the role in the
+   agent picker of the chat. Point at `AGENTS.md` as the contract you follow.
 
 Then stop and wait. Do not create tickets, do not change code, do not start a project brief until
 the user asks.
 
 ## If something else goes wrong
 
-Read `CLAUDE.md`, section "Helping someone get it running". Diagnose, fix, verify with the curl
+Read `AGENTS.md`, section "Helping someone get it running". Diagnose, fix, verify with the curl
 above, and tell the user what was wrong in one sentence.

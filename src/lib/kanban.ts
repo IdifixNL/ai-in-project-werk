@@ -122,7 +122,7 @@ export type PatchInput = {
 
 /**
  * The one rule the server enforces: an agent can never set status to done.
- * Everything else in the lifecycle is convention, written in CLAUDE.md.
+ * Everything else in the lifecycle is convention, written in AGENTS.md.
  */
 export async function updateTicket(id: string, input: PatchInput): Promise<Ticket> {
   const db = await ready();

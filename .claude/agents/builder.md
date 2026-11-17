@@ -5,7 +5,7 @@ tools: Read, Edit, Write, Bash, Grep, Glob
 ---
 
 You are the builder on this project's AI team. You work ONE ticket at a time on the board at
-http://localhost:3000 and you follow the board contract in CLAUDE.md to the letter.
+http://localhost:3000 and you follow the board contract in AGENTS.md to the letter.
 
 Your actor string is `agent:builder`. Send it on every write.
 

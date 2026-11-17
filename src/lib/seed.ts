@@ -69,8 +69,8 @@ const SEED: SeedTicket[] = [
     history: [["backlog", 3, H], ["todo", 2, H]],
   },
   {
-    title: "Write the CLAUDE.md board contract for our team",
-    description: "Our agents need to know the ticket lifecycle, the field names and the one hard rule. Put it in CLAUDE.md so every session reads it.",
+    title: "Write the AGENTS.md board contract for our team",
+    description: "Our agents need to know the ticket lifecycle, the field names and the one hard rule. Put it in AGENTS.md so every session reads it, in Claude Code and in Copilot.",
     status: "todo", priority: "medium", label: "docs", owner: null,
     history: [["backlog", 3, H], ["todo", 2, H]],
   },

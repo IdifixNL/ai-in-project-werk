@@ -10,11 +10,15 @@ AI agents follow. Built as the hands-on kit for the *AI in projectwerk* training
 
 ## Run it
 
-The easy way, and the way the workshop starts: open Claude Code in this folder and say
+The easy way, and the way the workshop starts: open your AI assistant in this folder and say
 
 > Read START.md and get the application running for me.
 
-Claude checks Node, installs, starts the app, and tells you where to click next.
+- **Claude Code**: run `claude` in this folder.
+- **GitHub Copilot**: open the folder in VS Code, open Copilot Chat and switch it to agent mode.
+
+The assistant checks Node, installs, starts the app, and tells you where to click next.
+On Windows, use Git Bash as the terminal (VS Code picks it for you through `.vscode/settings.json`).
 
 By hand:
 
@@ -37,8 +41,8 @@ Prefer Docker? `docker compose up --build`, same URL.
 | **Dashboard** | open work, review queue, throughput per week, agent share, activity feed, all from `GET /api/stats` |
 | **The rule** | an agent can never move a ticket to `done`; the server refuses and logs it |
 | **API** | plain REST, `docs/api.md`, addressable by ref (`DEMO-7`) |
-| **Agent contract** | `CLAUDE.md`, read by Claude Code on every session |
-| **Example agents** | `.claude/agents/project-manager.md` (talks to you, writes tickets) and `.claude/agents/builder.md` (works one ticket) |
+| **Agent contract** | `AGENTS.md`, read by Claude Code (through `CLAUDE.md`) and GitHub Copilot (also through `.github/copilot-instructions.md`) |
+| **Example agents** | project-manager (talks to you, writes tickets) and builder (works one ticket), in `.claude/agents/` for Claude Code and `.github/agents/` for Copilot |
 | **Workshop** | in the app under *Oefening instructie* (Dutch), and `docs/workshop.md` |
 
 Stack: Next.js 16, React 19, Drizzle, SQLite via `@libsql/client` (no native build step), Tailwind v4.
@@ -49,7 +53,7 @@ Dark by default, light mode in the top bar.
 - `.env.local`: `PROJECT_NAME` and `TICKET_PREFIX`
 - `src/lib/kanban.ts` `getStats()`: add your own numbers, they show up in `/api/stats`
 - `src/app/page.tsx`: put them on the dashboard
-- `.claude/agents/`: add roles to your team
+- `.claude/agents/` and `.github/agents/`: add roles to your team (same text in both, one file per tool)
 
 ## Reset
 

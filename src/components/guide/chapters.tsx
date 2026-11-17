@@ -16,13 +16,13 @@ export const CHAPTERS: Chapter[] = [
       <>
         <Lead>
           Je hebt een werkende cockpit: een Kanban-bord met een vaste levenscyclus en een dashboard dat daaruit leest.
-          Vandaag sluit je Claude Code aan op het bord, geef je het een team, en laat je dat team werken terwijl jij reviewt.
+          Vandaag sluit je je AI-assistent aan op het bord (Claude Code of GitHub Copilot, wat je hebt), geef je het een team, en laat je dat team werken terwijl jij reviewt.
         </Lead>
         <Grid>
           <Card title="Board" href="/board">Vijf kolommen. Boven elke kolom staat wie een ticket ernaartoe mag verplaatsen: HUMAN of AGENT. Sleep kaarten, klik op een kaart voor de details.</Card>
           <Card title="Ticket">Vier tabbladen. <b>Request</b> is jouw vraag in gewone taal. <b>AI Plan</b> schrijft de agent voordat er code komt. <b>Result</b> is wat er is gedaan plus bewijs. <b>Journey</b> is wie wat deed, en wanneer.</Card>
           <Card title="Dashboard" href="/">Alle cijfers komen uit een plek: <Code>GET /api/stats</Code>. Dit is de plek die je straks uitbreidt.</Card>
-          <Card title="CLAUDE.md en docs/project.md">Het contract dat Claude Code leest bij elke sessie (de tabbladen, wie wat mag, de stappen), en het projectbrief dat zegt waar jouw project over gaat. Jij bent de eigenaar van beide.</Card>
+          <Card title="AGENTS.md en docs/project.md">Het contract dat je assistent leest bij elke sessie (de tabbladen, wie wat mag, de stappen). Claude Code leest het via CLAUDE.md, Copilot via .github/copilot-instructions.md. En het projectbrief dat zegt waar jouw project over gaat. Jij bent de eigenaar van beide.</Card>
         </Grid>
         <H>De regel die de server afdwingt</H>
         <Lead>
@@ -45,12 +45,12 @@ export const CHAPTERS: Chapter[] = [
         <Lead>Eerst een keer de hele cyclus met je eigen ogen zien. Een agent, een ticket, jij als reviewer.</Lead>
         <Steps items={[
           <>Zet je naam in de balk bovenaan. Alles wat je vanuit het scherm doet, wordt gelogd als <Code>human:jouwnaam</Code>.</>,
-          <>Draait de app nog niet? Start Claude Code in de projectmap (<Code>claude</Code>) en zeg: <Prompt>Lees START.md en zet de applicatie voor mij aan.</Prompt> Claude Code controleert Node, installeert, start de app en vertelt je waar je moet klikken. Zelf doen kan ook: <Code>npm run dev</Code> in een aparte terminal.</>,
-          <>Geef de eerste opdracht: <Prompt>Lees CLAUDE.md. Pak daarna DEMO-18 op van het bord en werk het ticket af.</Prompt></>,
+          <>Draait de app nog niet? Start je assistent in de projectmap: Claude Code met <Code>claude</Code>, of in VS Code Copilot Chat in agent-modus. Zeg: <Prompt>Lees START.md en zet de applicatie voor mij aan.</Prompt> De assistent controleert Node, installeert, start de app en vertelt je waar je moet klikken. Zelf doen kan ook: <Code>npm run dev</Code> in een aparte terminal.</>,
+          <>Geef de eerste opdracht: <Prompt>Lees AGENTS.md. Pak daarna DEMO-18 op van het bord en werk het ticket af.</Prompt></>,
           <>Kijk mee op het bord. Verscheen het AI Plan voordat er code veranderde? Eindigde het ticket in review, niet in done? Kun je het bewijs zelf controleren?</>,
-          <>Open het ticket, tabblad Result. Keur goed, of kies <i>Request changes</i> en schrijf waarom. Stuur het bewust een keer terug en vraag Claude het ticket opnieuw op te pakken. Leest de agent jouw opmerking? Kijk in Journey.</>,
+          <>Open het ticket, tabblad Result. Keur goed, of kies <i>Request changes</i> en schrijf waarom. Stuur het bewust een keer terug en vraag je assistent het ticket opnieuw op te pakken. Leest de agent jouw opmerking? Kijk in Journey.</>,
         ]} />
-        <Note>Claude Code gebruikt hier de agent <Code>builder</Code> uit <Code>.claude/agents/builder.md</Code>. Open dat bestand, het is een halve pagina. Zo ziet een rol eruit: naam, taak, gereedschap, stappen, regels.</Note>
+        <Note>Je assistent gebruikt hier de agent <Code>builder</Code>: in Claude Code uit <Code>.claude/agents/builder.md</Code>, in Copilot uit <Code>.github/agents/builder.agent.md</Code>. Dezelfde tekst, een bestand per tool. Open er een, het is een halve pagina. Zo ziet een rol eruit: naam, taak, gereedschap, stappen, regels.</Note>
       </>
     ),
   },
@@ -67,8 +67,8 @@ export const CHAPTERS: Chapter[] = [
         <H>Zo praat je met een agent</H>
         <Steps items={[
           <>De app draait (via START.md of <Code>npm run dev</Code>). Laat die staan.</>,
-          <>Claude Code in dezelfde projectmap: <Code>claude</Code>. Dit is je gesprek met het team. Dezelfde sessie waarmee je de app hebt gestart is prima.</>,
-          <>Noem de rol in je zin: <i>&quot;Gebruik de project-manager agent, …&quot;</i> of <i>&quot;Gebruik de builder, …&quot;</i>. Claude Code kiest de rol dan zeker goed. Later mag je dat weglaten.</>,
+          <>Je assistent in dezelfde projectmap: <Code>claude</Code> voor Claude Code, of Copilot Chat in agent-modus in VS Code. Dit is je gesprek met het team. Hetzelfde gesprek waarmee je de app hebt gestart is prima.</>,
+          <>Noem de rol in je zin: <i>&quot;Gebruik de project-manager agent, …&quot;</i> of <i>&quot;Gebruik de builder, …&quot;</i>. Claude Code kiest de rol dan zeker goed. In Copilot kies je de rol in de agent-keuzelijst van de chat (project-manager of builder) en zeg je daarna wat je wilt.</>,
           <>Typ gewoon Nederlands. De agent antwoordt in jouw taal en vraagt door als iets onduidelijk is. Jij antwoordt in het gesprek, niet op het bord.</>,
           <>Houd het bord open in je browser. Alles wat de agent doet, zie je daar binnen een paar seconden.</>,
         ]} />
@@ -106,7 +106,7 @@ export const CHAPTERS: Chapter[] = [
           <>Laat de projectmanager een groot idee opsplitsen. Zijn de tickets klein genoeg voor een builder-sessie?</>,
           <>Vraag de projectmanager het bord te lezen en te zeggen wat als eerste moet. Ben je het eens?</>,
           <>Vertel de projectmanager tussendoor iets nieuws over je project en kijk of hij aanbiedt het in <Code>docs/project.md</Code> te zetten.</>,
-          <>Open <Code>.claude/agents/project-manager.md</Code> en voeg een regel toe die bij jouw manier van werken past. Bijvoorbeeld: elk ticket krijgt een acceptatiecriterium.</>,
+          <>Open <Code>.claude/agents/project-manager.md</Code> (Claude Code) of <Code>.github/agents/project-manager.agent.md</Code> (Copilot) en voeg een regel toe die bij jouw manier van werken past. Bijvoorbeeld: elk ticket krijgt een acceptatiecriterium. Gebruik je beide tools, zet de regel dan in beide bestanden.</>,
         ]} />
       </>
     ),
@@ -119,11 +119,11 @@ export const CHAPTERS: Chapter[] = [
       <>
         <Lead>
           Twee rollen heb je nu. Een team wordt interessant bij drie of vier, elk met iets wat het wel en niet mag.
-          Je laat Claude Code de rol schrijven, in dezelfde vorm als builder.md, en je leest hem zelf na voordat je hem gebruikt.
+          Je laat je assistent de rol schrijven, in dezelfde vorm als de builder, en je leest hem zelf na voordat je hem gebruikt. De assistent zet de rol in beide mappen: .claude/agents voor Claude Code en .github/agents voor Copilot.
         </Lead>
         <Grid>
           <Card title="Tester" level="beginner">
-            <Prompt>Maak een agent tester in .claude/agents, in dezelfde stijl als builder. De tester controleert een ticket in review: voert de commando&apos;s uit het bewijs zelf uit, opent de genoemde bestanden, en plaatst een comment met een oordeel. De tester verplaatst nooit tickets en wijzigt geen code.</Prompt>
+            <Prompt>Maak een agent tester in .claude/agents en .github/agents, in dezelfde stijl als builder. De tester controleert een ticket in review: voert de commando&apos;s uit het bewijs zelf uit, opent de genoemde bestanden, en plaatst een comment met een oordeel. De tester verplaatst nooit tickets en wijzigt geen code.</Prompt>
             Laat de tester los op een ticket dat de builder net heeft afgeleverd.
           </Card>
           <Card title="Reviewer-hulp" level="beginner">
@@ -159,7 +159,7 @@ export const CHAPTERS: Chapter[] = [
           </Card>
           <Card title="Screenshots als bewijs met Playwright" level="gemiddeld">
             Nu is bewijs tekst. Laat de agent Playwright toevoegen en na elk UI-ticket een screenshot maken van de gewijzigde pagina, opgeslagen in <Code>data/evidence/</Code>, met het pad als bewijs op het ticket.
-            <Prompt>Voeg Playwright toe als dev-dependency en een script npm run shot dat een screenshot van een URL opslaat in data/evidence. Werk CLAUDE.md bij: bij elk UI-ticket hoort een screenshot als bewijs.</Prompt>
+            <Prompt>Voeg Playwright toe als dev-dependency en een script npm run shot dat een screenshot van een URL opslaat in data/evidence. Werk AGENTS.md bij: bij elk UI-ticket hoort een screenshot als bewijs.</Prompt>
           </Card>
           <Card title="Bewijs verplicht" level="gemiddeld">
             Pas de server aan: een ticket mag alleen naar review als er een verdict en minstens een bewijsstuk is. Zonder bewijs: 400 met uitleg. Kijk hoe je agent reageert op de foutmelding.
@@ -249,11 +249,11 @@ export const CHAPTERS: Chapter[] = [
         <Bullets items={[
           <>Had je bij het plan al nee kunnen zeggen, voordat er code was? Zo niet, dan was het plan te vaag. Zeg dat in een comment.</>,
           <>Kun je de claim controleren zonder de code te lezen? &quot;Het werkt&quot; is geen bewijs. Een commando met uitvoer, een screenshot, een bestandspad wel.</>,
-          <>Deed het team iets wat je een nieuwe collega niet zou laten doen? Dan mist er een regel in CLAUDE.md of in de agent. Voeg hem toe.</>,
+          <>Deed het team iets wat je een nieuwe collega niet zou laten doen? Dan mist er een regel in AGENTS.md of in de agent. Voeg hem toe.</>,
           <>Backlog naar todo is van jou. Pakt de agent uit de backlog, dan is dat een regel die je bent vergeten op te schrijven.</>,
         ]} />
         <H>Aan het eind van de dag</H>
-        <Lead>Schrijf een regel op die je hebt toegevoegd aan CLAUDE.md of aan een agent, en waarom. Die regel is het echte resultaat van vandaag.</Lead>
+        <Lead>Schrijf een regel op die je hebt toegevoegd aan AGENTS.md of aan een agent, en waarom. Die regel is het echte resultaat van vandaag.</Lead>
       </>
     ),
   },
@@ -264,8 +264,8 @@ export const CHAPTERS: Chapter[] = [
     body: (
       <>
         <Lead>
-          Eerste stap, altijd: vraag het aan Claude Code zelf. Start <Code>claude</Code> in de projectmap en plak de foutmelding erbij.
-          Het kent de bekende problemen uit CLAUDE.md en lost ze voor je op.
+          Eerste stap, altijd: vraag het aan je assistent zelf. Start <Code>claude</Code> in de projectmap, of Copilot Chat in agent-modus, en plak de foutmelding erbij.
+          Het kent de bekende problemen uit AGENTS.md en lost ze voor je op.
         </Lead>
         <Prompt>De app start niet. Dit is wat ik zie in de terminal: [plak de foutmelding]. Help me het werkend te krijgen.</Prompt>
         <H>Wat het meestal is</H>
@@ -273,10 +273,10 @@ export const CHAPTERS: Chapter[] = [
           <>Bord leeg of foutmeldingen: stop <Code>npm run dev</Code>, verwijder <Code>data/cockpit.db</Code>, start opnieuw. De demo-data komt terug.</>,
           <>Poort 3000 bezet: <Code>npm run dev -- -p 3001</Code>, en vertel je agent de nieuwe poort.</>,
           <>Liever Docker: <Code>docker compose up --build</Code>, dan http://localhost:3000.</>,
-          <>Windows en curl: PowerShell breekt JSON-aanhalingstekens. Gebruik Git Bash als je de API zelf met de hand probeert. De agent lost dit zelf op.</>,
+          <>Windows en curl: PowerShell breekt JSON-aanhalingstekens. Gebruik Git Bash, ook voor je assistent. Claude Code doet dat vanzelf; VS Code opent Git Bash via de instelling in deze repo. Staat je terminal in VS Code toch op PowerShell, open dan een nieuwe terminal of kies Git Bash in de keuzelijst van de terminal.</>,
           <>De agent ziet het bord niet: draait de app? De agent gebruikt <Code>curl localhost:3000</Code> op jouw machine.</>,
           <>De agent zet een ticket op done: dat kan niet, de server weigert. Zie je het toch, dan deed een mens het.</>,
-          <>Alle API-aanroepen staan in <Code>docs/api.md</Code>, het contract in <Code>CLAUDE.md</Code>, de rollen in <Code>.claude/agents/</Code>.</>,
+          <>Alle API-aanroepen staan in <Code>docs/api.md</Code>, het contract in <Code>AGENTS.md</Code>, de rollen in <Code>.claude/agents/</Code> (Claude Code) en <Code>.github/agents/</Code> (Copilot).</>,
         ]} />
       </>
     ),

@@ -61,7 +61,7 @@ export function Pre({ children }: { children: string }) {
   return <pre className="m-0 overflow-x-auto rounded-md border border-line bg-card px-3.5 py-3 font-mono text-[11.5px] leading-relaxed text-text">{children}</pre>;
 }
 
-/** A prompt the participant can type into Claude Code. */
+/** A prompt the participant can type into their AI assistant (Claude Code or GitHub Copilot). */
 export function Prompt({ children }: { children: ReactNode }) {
   return (
     <span className="my-1.5 block rounded-md border-l-2 border-purple-hi bg-purple-10 px-3 py-2 text-[12px] italic text-text">
